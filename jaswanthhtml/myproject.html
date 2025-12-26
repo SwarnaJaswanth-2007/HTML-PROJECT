@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Mentorship & Coaching Platform</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      background: linear-gradient(135deg, #f9f9f9, #e6f0ff);
+      margin: 0;
+      padding: 0;
+      color: #333;
+    }
+    header {
+      background: linear-gradient(135deg, #0077cc, #005fa3);
+      color: white;
+      padding: 30px 20px;
+      text-align: center;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+    nav {
+      background-color: #ffffff;
+      padding: 12px;
+      text-align: center;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+    nav a {
+      margin: 0 18px;
+      text-decoration: none;
+      color: #0077cc;
+      font-weight: 600;
+      transition: color 0.3s, border-bottom 0.3s;
+      padding-bottom: 4px;
+      cursor: pointer;
+    }
+    nav a:hover {
+      color: #005fa3;
+      border-bottom: 2px solid #0077cc;
+    }
+    section {
+      padding: 30px;
+      display: none;
+    }
+    section.active {
+      display: block;
+    }
+    section h2 {
+      color: #005fa3;
+      margin-bottom: 20px;
+      font-size: 1.6em;
+      border-left: 5px solid #0077cc;
+      padding-left: 10px;
+    }
+    .card {
+      background: #ffffff;
+      padding: 20px;
+      margin-bottom: 25px;
+      border-radius: 12px;
+      box-shadow: 0 6px 12px rgba(0,0,0,0.08);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 18px rgba(0,0,0,0.15);
+    }
+    .card h3 {
+      margin-top: 0;
+      color: #0077cc;
+      font-size: 1.3em;
+    }
+    .card p {
+      color: #555;
+      margin: 10px 0 15px;
+    }
+    button {
+      background: linear-gradient(135deg, #0077cc, #005fa3);
+      color: white;
+      border: none;
+      padding: 10px 18px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: background 0.3s, transform 0.2s;
+    }
+    button:hover {
+      background: linear-gradient(135deg, #005fa3, #004080);
+      transform: scale(1.05);
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Mentorship & Coaching Platform</h1>
+  <p>Empowering growth through guidance</p>
+</header>
+
+<nav>
+  <a onclick="showPage('admin')">Admin Panel</a>
+  <a onclick="showPage('mentee')">Mentee Dashboard</a>
+</nav>
+
+<!-- Admin Panel -->
+<section id="admin" class="active">
+  <h2>👨‍💼 Admin Panel</h2>
+  <div class="card">
+    <h3>Match Mentors with Mentees</h3>
+    <p>Select mentors and assign them to mentees based on interests and goals.</p>
+    <button onclick="showPage('matchPage')">Match Now</button>
+  </div>
+  <div class="card">
+    <h3>Manage Mentorship Sessions</h3>
+    <p>View upcoming sessions and edit schedules.</p>
+    <button onclick="showPage('sessionsPage')">Manage Sessions</button>
+  </div>
+  <div class="card">
+    <h3>Track Progress</h3>
+    <p>Monitor mentee development and feedback.</p>
+    <button onclick="showPage('reportsPage')">View Reports</button>
+  </div>
+</section>
+
+<!-- Mentee Dashboard -->
+<section id="mentee">
+  <h2>🙋‍♀ Mentee Dashboard</h2>
+  <div class="card">
+    <h3>Connect with Mentors</h3>
+    <p>Browse mentor profiles and send connection requests.</p>
+    <button onclick="showPage('mentorsPage')">Find Mentors</button>
+  </div>
+  <div class="card">
+    <h3>Schedule Sessions</h3>
+    <p>Book time slots for mentorship meetings.</p>
+    <button onclick="showPage('schedulePage')">Schedule Now</button>
+  </div>
+  <div class="card">
+    <h3>Track Development</h3>
+    <p>View your progress and set new goals.</p>
+    <button onclick="showPage('progressPage')">View Progress</button>
+  </div>
+</section>
+
+<!-- Extra content pages -->
+<section id="matchPage">
+  <h2>🔗 Match Mentors</h2>
+  <p>Here you can assign mentors to mentees based on their interests and goals.</p>
+  <button onclick="showPage('admin')">⬅ Back</button>
+</section>
+
+<section id="sessionsPage">
+  <h2>📅 Manage Sessions</h2>
+  <p>View and edit upcoming mentorship sessions here.</p>
+  <button onclick="showPage('admin')">⬅ Back</button>
+</section>
+
+<section id="reportsPage">
+  <h2>📊 Progress Reports</h2>
+  <p>Track mentee development and feedback reports.</p>
+  <button onclick="showPage('admin')">⬅ Back</button>
+</section>
+
+<section id="mentorsPage">
+  <h2>👥 Find Mentors</h2>
+  <p>Browse mentor profiles and send connection requests.</p>
+  <button onclick="showPage('mentee')">⬅ Back</button>
+</section>
+
+<section id="schedulePage">
+  <h2>📆 Schedule Sessions</h2>
+  <p>Book mentorship meetings and manage your calendar.</p>
+  <button onclick="showPage('mentee')">⬅ Back</button>
+</section>
+
+<section id="progressPage">
+  <h2>🚀 Track Development</h2>
+  <p>View your progress and set new goals here.</p>
+  <button onclick="showPage('mentee')">⬅ Back</button>
+</section>
+
+<script>
+  function showPage(pageId) {
+    document.querySelectorAll('section').forEach(page => {
+      page.classList.remove('active');
+    });
+    document.getElementById(pageId).classList.add('active');
+  }
+</script>
+
+</body>
+</html>
